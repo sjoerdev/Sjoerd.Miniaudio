@@ -52,18 +52,18 @@ Write-Host "generating bindings"
     --prefixStrip ma_ `
     --methodClassName ma
 
-# set up move paths
 $miniaudio_generated_path_new = Join-Path $local_repo "Bindings/Generated"
-$miniaudio_dll_path_new = Join-Path $local_repo "Bindings/runtimes/win-x64/native/miniaudio.dll"
-$miniaudio_so_path_new = Join-Path $local_repo "Bindings/runtimes/linux-x64/native/miniaudio.so"
 
-# make sure runtimes dir and the expected 'native' subfolders exist
-$runtimes_path = Join-Path $local_repo "Bindings/runtimes"
-$runtimes_path_windows_native = Join-Path $local_repo "Bindings/runtimes/win-x64/native"
-$runtimes_path_linux_native = Join-Path $local_repo "Bindings/runtimes/linux-x64/native"
-if (-not (Test-Path $runtimes_path)) { New-Item -ItemType Directory $runtimes_path  | Out-Null}
-if (-not (Test-Path $runtimes_path_windows_native)) { New-Item -ItemType Directory -Force $runtimes_path_windows_native  | Out-Null}
-if (-not (Test-Path $runtimes_path_linux_native)) { New-Item -ItemType Directory -Force $runtimes_path_linux_native  | Out-Null}
+$native_path = Join-Path $local_repo "Bindings/native"
+$native_path_windows = Join-Path $native_path "windows"
+$native_path_linux = Join-Path $native_path "linux"
+$miniaudio_dll_path_new = Join-Path $native_path_windows "miniaudio.dll"
+$miniaudio_so_path_new = Join-Path $native_path_linux "miniaudio.so"
+
+# make sure native dirs exists
+if (-not (Test-Path $native_path)) { New-Item -ItemType Directory $native_path  | Out-Null}
+if (-not (Test-Path $native_path_windows)) { New-Item -ItemType Directory $native_path_windows  | Out-Null}
+if (-not (Test-Path $native_path_linux)) { New-Item -ItemType Directory $native_path_linux  | Out-Null}
 
 Write-Host "moving the generated bindings"
 if (Test-Path $miniaudio_generated_path_new) { Remove-Item -Force $miniaudio_generated_path_new }
