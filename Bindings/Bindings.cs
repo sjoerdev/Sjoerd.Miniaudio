@@ -5257,7 +5257,7 @@ namespace Sjoerd.Miniaudio
         }
     }
 
-    public static unsafe partial class Miniaudio
+    public static unsafe partial class ma
     {
         [DllImport("miniaudio", CallingConvention = CallingConvention.Cdecl, EntryPoint = "ma_version", ExactSpelling = true)]
         public static extern void version([NativeTypeName("ma_uint32 *")] uint* pMajor, [NativeTypeName("ma_uint32 *")] uint* pMinor, [NativeTypeName("ma_uint32 *")] uint* pRevision);

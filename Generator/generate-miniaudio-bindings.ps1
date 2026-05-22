@@ -49,7 +49,7 @@ Write-Host "generating bindings"
     --libraryPath miniaudio `
     --namespace Sjoerd.Miniaudio `
     --prefixStrip ma_ `
-    --methodClassName Miniaudio
+    --methodClassName ma
 
 # set up move paths
 $miniaudio_cs_path_new = Join-Path $local_repo "Bindings/Bindings.cs"
