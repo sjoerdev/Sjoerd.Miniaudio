@@ -1,0 +1,7 @@
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <DebugType>embedded</DebugType>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+</Project>
