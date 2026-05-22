@@ -45,10 +45,10 @@ $linux_links = '-lpthread', '-lm'
 Write-Host "generating bindings"
 & ClangSharpPInvokeGenerator `
     --file $miniaudio_h_path `
-    --include-directory $miniaudio_repo `
     --output $miniaudio_cs_path `
     --libraryPath miniaudio `
     --namespace Sjoerd.Miniaudio `
+    --prefixStrip ma_ `
     --methodClassName Miniaudio
 
 # set up move paths
