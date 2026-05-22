@@ -1,6 +1,6 @@
 # requires git, gcc, ClangSharpPInvokeGenerator
 
-$root = Get-Location
+$root = $PSScriptRoot
 $miniaudio_repo = Join-Path $root "./miniaudio/"
 $output_directory = Join-Path $root "./output/"
 
