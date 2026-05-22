@@ -6,4 +6,8 @@
     <OutputType>exe</OutputType>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\a\Bindings.csproj" />
+  </ItemGroup>
+
 </Project>
