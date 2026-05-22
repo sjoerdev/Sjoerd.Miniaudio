@@ -4,6 +4,7 @@
 
   <PropertyGroup>
     <OutputType>exe</OutputType>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>

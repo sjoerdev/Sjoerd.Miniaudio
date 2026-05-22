@@ -2,9 +2,9 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using static MiniaudioSharp.ma_format;
+using static Sjoerd.Miniaudio.ma_format;
 
-namespace MiniaudioSharp
+namespace Sjoerd.Miniaudio
 {
     public enum ma_log_level
     {
@@ -5257,7 +5257,7 @@ namespace MiniaudioSharp
         }
     }
 
-    public static unsafe partial class Methods
+    public static unsafe partial class Miniaudio
     {
         [DllImport("miniaudio", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
         public static extern void ma_version([NativeTypeName("ma_uint32 *")] uint* pMajor, [NativeTypeName("ma_uint32 *")] uint* pMinor, [NativeTypeName("ma_uint32 *")] uint* pRevision);
