@@ -29,10 +29,10 @@ New-Item -ItemType Directory -Path $output_directory | Out-Null
 # -o ..\MiniaudioSharp\src <# output folder #>
 
 $miniaudio_c_path = Join-Path $miniaudio_repo "miniaudio.c"
-$miniaudio_h_path = Join-Path $miniaudio_repo "miniaudio.h"
+$miniaudio_h_path = Join-Path $miniaudio_repo "/extras/miniaudio_split/miniaudio.h"
 $miniaudio_dll_path = Join-Path $output_directory "miniaudio.dll"
 $miniaudio_so_path = Join-Path $output_directory "miniaudio.so"
-$miniaudio_cs_path = Join-Path $output_directory "Bindings.cs"
+$miniaudio_generated_path = Join-Path $output_directory "Generated"
 
 Write-Host "building dll"
 $mindows_links = '-lwinmm', '-luser32', '-lgdi32', '-lole32', '-luuid'
@@ -44,15 +44,16 @@ $linux_links = '-lpthread', '-lm'
 
 Write-Host "generating bindings"
 & ClangSharpPInvokeGenerator `
+    -c generate-helper-types multi-file `
     --file $miniaudio_h_path `
-    --output $miniaudio_cs_path `
+    --output $miniaudio_generated_path `
     --libraryPath miniaudio `
     --namespace Sjoerd.Miniaudio `
     --prefixStrip ma_ `
     --methodClassName ma
 
 # set up move paths
-$miniaudio_cs_path_new = Join-Path $local_repo "Bindings/Bindings.cs"
+$miniaudio_generated_path_new = Join-Path $local_repo "Bindings/Generated"
 $miniaudio_dll_path_new = Join-Path $local_repo "Bindings/native/windows/miniaudio.dll"
 $miniaudio_so_path_new = Join-Path $local_repo "Bindings/native/linux/miniaudio.so"
 
@@ -65,9 +66,9 @@ if (-not (Test-Path $native_path_windows)) { New-Item -ItemType Directory $nativ
 if (-not (Test-Path $native_path_linux)) { New-Item -ItemType Directory $native_path_linux  | Out-Null}
 
 Write-Host "moving the generated bindings"
-if (Test-Path $miniaudio_cs_path_new) { Remove-Item -Force $miniaudio_cs_path_new }
+if (Test-Path $miniaudio_generated_path_new) { Remove-Item -Force $miniaudio_generated_path_new }
 if (Test-Path $miniaudio_dll_path_new) { Remove-Item -Force $miniaudio_dll_path_new }
 if (Test-Path $miniaudio_so_path_new) { Remove-Item -Force $miniaudio_so_path_new }
-Move-Item $miniaudio_cs_path $miniaudio_cs_path_new
+Move-Item $miniaudio_generated_path $miniaudio_generated_path_new
 Move-Item $miniaudio_dll_path $miniaudio_dll_path_new
 Move-Item $miniaudio_so_path $miniaudio_so_path_new
