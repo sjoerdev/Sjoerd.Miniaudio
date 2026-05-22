@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\a\Bindings.csproj" />
+    <ProjectReference Include="..\Bindings\Bindings.csproj" />
   </ItemGroup>
 
 </Project>
