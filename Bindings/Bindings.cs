@@ -6847,13 +6847,13 @@ namespace Sjoerd.Miniaudio
 
         public static float* ma_offset_pcm_frames_ptr_f32(float* p, [NativeTypeName("ma_uint64")] ulong offsetInFrames, [NativeTypeName("ma_uint32")] uint channels)
         {
-            return (float*)(ma_offset_pcm_frames_ptr((void*)(p), offsetInFrames, (ma_format)(ma_format_f32), channels));
+            return (float*)(ma_offset_pcm_frames_ptr((void*)(p), offsetInFrames, ma_format_f32, channels));
         }
 
         [return: NativeTypeName("const float *")]
         public static float* ma_offset_pcm_frames_const_ptr_f32([NativeTypeName("const float *")] float* p, [NativeTypeName("ma_uint64")] ulong offsetInFrames, [NativeTypeName("ma_uint32")] uint channels)
         {
-            return (float*)(ma_offset_pcm_frames_const_ptr((void*)(p), offsetInFrames, (ma_format)(ma_format_f32), channels));
+            return (float*)(ma_offset_pcm_frames_const_ptr((void*)(p), offsetInFrames, ma_format_f32, channels));
         }
 
         [DllImport("miniaudio", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]

@@ -44,13 +44,12 @@ $linux_links = '-lpthread', '-lm'
 
 Write-Host "generating bindings"
 & ClangSharpPInvokeGenerator `
-    -f $miniaudio_h_path `
-    -I $miniaudio_repo `
-    -o $miniaudio_cs_path `
-    -l miniaudio `
-    -n Sjoerd.Miniaudio `
-    --methodClassName Miniaudio `
-    -x c --additional '-DWIN32' --additional '-D_WINDOWS'
+    --file $miniaudio_h_path `
+    --include-directory $miniaudio_repo `
+    --output $miniaudio_cs_path `
+    --libraryPath miniaudio `
+    --namespace Sjoerd.Miniaudio `
+    --methodClassName Miniaudio
 
 # set up move paths
 $miniaudio_cs_path_new = Join-Path $local_repo "Bindings/Bindings.cs"
