@@ -11,4 +11,11 @@
     <ProjectReference Include="..\Bindings\Bindings.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="res/**">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TargetPath>%(Filename)%(Extension)</TargetPath>
+    </Content>
+  </ItemGroup>
+
 </Project>
