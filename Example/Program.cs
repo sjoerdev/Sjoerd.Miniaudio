@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Text;
 using Sjoerd.Miniaudio;
 
@@ -12,7 +13,7 @@ unsafe static class Program
 
         ma_sound sound;
 
-        byte[] utf8 = Encoding.UTF8.GetBytes("test.wav\0");
+        byte[] utf8 = Encoding.UTF8.GetBytes(Path.Combine(AppContext.BaseDirectory, "test.wav") + "\0");
 
         fixed (byte* pFile = utf8)
         {

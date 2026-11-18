@@ -20,14 +20,6 @@ if (Test-Path $output_directory)
 }
 New-Item -ItemType Directory -Path $output_directory | Out-Null
 
-# -c multi-file compatible-codegen generate-aggressive-inlining exclude-default-remappings generate-helper-types <# configuration for the generator#>
-# --file miniaudio.h <# file we want to generate bindings for #> 
-# --traverse miniaudio.h
-# -n Sjoerd.Miniaudio <# namespace of the bindings #>
-# --methodClassName Miniaudio <# class name where to put methods #>
-# --libraryPath miniaudio <# name of the DLL #>
-# -o ..\MiniaudioSharp\src <# output folder #>
-
 $miniaudio_c_path = Join-Path $miniaudio_repo "miniaudio.c"
 $miniaudio_h_path = Join-Path $miniaudio_repo "/extras/miniaudio_split/miniaudio.h"
 $miniaudio_dll_path = Join-Path $output_directory "miniaudio.dll"
